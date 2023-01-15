@@ -17,7 +17,9 @@ export default class Ship {
     return this._length;
   }
 
-  //   hit() {}
+  hit() {
+    this.hitsTaken += 1;
+  }
 
   //   isSunk() {}
 }
