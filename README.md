@@ -2,7 +2,7 @@ Ship factory:
 - Properties:
 - 1. Length (private)
 - 2. Number of times hit (probably "hit in different places"; however, if a hit part is marked then onwards as unselectable for future hits, this will just be equal to the number of hits) (private)
-- 3. Whether or not they've been sunk (public)
+- 3. Whether or not they've been sunk (private)
 - Methods:
 1. hit, which increases the number of hits on the ship (public)
 2. isSunk, which calculates whether the ship is sunk or not (e.g. by returning true or false respectively) based on the number of hits and the length of the ship (i.e. if number of hits === length) (public)
