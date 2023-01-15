@@ -16,6 +16,6 @@
     "webpack-cli": "^5.0.1"
   },
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest"
   }
 }
