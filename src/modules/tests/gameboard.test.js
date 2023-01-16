@@ -26,7 +26,7 @@ describe('Gameboard instantiated with ships', () => {
     gameboard = new Gameboard(allShipCoordinates);
   });
 
-  test('Gameboard does not report sinking if not all ships have been sunk', () => {
+  test('Gameboard does not report sinking if not all ships have not been sunk', () => {
     for (let shipIndex = 0; shipIndex < allShipCoordinates.length; shipIndex += 1) {
       const ship = allShipCoordinates[shipIndex];
       const start = ship[0];
