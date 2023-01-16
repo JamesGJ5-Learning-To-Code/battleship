@@ -71,7 +71,7 @@ describe('Gameboard instantiated with ships', () => {
 
 describe('Gameboard instantiated without ships', () => {
   test('Gameboard reports sinking as soon as Gameboard is instantiated without ships', () => {
-    gameboard = new Gameboard([]);
+    const gameboard = new Gameboard([]);
     expect(gameboard.afloatShipQuantity).toBe(0);
   });
 });
