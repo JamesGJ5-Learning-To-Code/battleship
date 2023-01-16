@@ -46,11 +46,11 @@ export default class Gameboard {
 
   static validateCoordinateValues(iStart, jStart, iEnd, jEnd) {
     if (iStart !== iEnd && jStart !== jEnd) {
-      throw Error('The ship must be either horizontal or vertical');
+      throw new Error('The ship must be either horizontal or vertical');
     } else if (
       [iStart, jStart, iEnd, jEnd].some((val) => !Number.isInteger(val) || val < 0 || val > 9)
     ) {
-      throw Error('Coordinate values must be integers betweeen 0 and 9 inclusive');
+      throw new Error('Coordinate values must be integers betweeen 0 and 9 inclusive');
     }
   }
 
@@ -66,10 +66,15 @@ export default class Gameboard {
 
   fillSquare(i, j, ship) {
     if (this.gameboard[i][j] !== null) {
-      throw Error('Ships cannot be allowed to overlap');
+      throw new Error('Ships cannot be allowed to overlap');
     }
     this.gameboard[i][j] = ship;
   }
 
-  receiveAttack(attackCoordinates) {}
+  // receiveAttack(attackCoordinates) {
+  //   const [i, j] = attackCoordinates;
+  //   if (this.gameboard[i][j] === 'x') {
+  //     throw new
+  //   }
+  // }
 }

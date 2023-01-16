@@ -8,7 +8,7 @@ export default class Ship {
 
   set length(value) {
     if (!Number.isInteger(value) || value < 1) {
-      throw Error('The selected length must be an integer greater than 0');
+      throw new Error('The selected length must be an integer greater than 0');
     }
     this._length = value;
   }
