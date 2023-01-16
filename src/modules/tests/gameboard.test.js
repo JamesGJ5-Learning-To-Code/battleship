@@ -46,7 +46,7 @@ describe('Gameboard instantiated with ships', () => {
     // TODO: later, replace allShipsSunk with some announcement that acts like a public
     // side-effect, like one at
     // https://medium.com/@jamesjefferyuk/javascript-what-are-pure-functions-4d4d5392d49c
-    expect(gameboard.allShipsSunk).toBe(false);
+    expect(gameboard.afloatShipQuantity).toBe(1);
   });
 
   test('Gameboard reports sinking as soon as all ships have been sunk', () => {
@@ -60,13 +60,13 @@ describe('Gameboard instantiated with ships', () => {
         }
       }
     }
-    expect(gameboard.allShipsSunk).toBe(true);
+    expect(gameboard.afloatShipQuantity).toBe(0);
   });
 });
 
 describe('Gameboard instantiated without ships', () => {
   test('Gameboard reports sinking as soon as Gameboard is instantiated without ships', () => {
     gameboard = new Gameboard([]);
-    expect(gameboard.allShipsSunk).toBe(true);
+    expect(gameboard.afloatShipQuantity).toBe(0);
   });
 });
