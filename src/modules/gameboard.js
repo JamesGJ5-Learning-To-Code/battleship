@@ -72,10 +72,21 @@ export default class Gameboard {
   }
 
   receiveAttack(i, j) {
-    if (this.gameboard[i][j] === 'x') {
+    const squareContents = this.gameboard[i][j];
+    if (squareContents === 'x') {
       throw new Error('Attacks must not hit the same place twice');
+    } else if (squareContents instanceof Ship) {
+      this.receiveHitToShip(squareContents);
     }
-    // TODO: add in logic for hitting ships etc.
+    this.markSquareAsHit(i, j);
+  }
+
+  receiveHitToShip(ship) {
+    ship.hit();
+    this.afloatShipQuantity -= ship.isSunk();
+  }
+
+  markSquareAsHit(i, j) {
     this.gameboard[i][j] = 'x';
   }
 }
