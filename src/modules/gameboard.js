@@ -71,10 +71,11 @@ export default class Gameboard {
     this.gameboard[i][j] = ship;
   }
 
-  // receiveAttack(attackCoordinates) {
-  //   const [i, j] = attackCoordinates;
-  //   if (this.gameboard[i][j] === 'x') {
-  //     throw new
-  //   }
-  // }
+  receiveAttack(i, j) {
+    if (this.gameboard[i][j] === 'x') {
+      throw new Error('Attacks must not hit the same place twice');
+    }
+    // TODO: add in logic for hitting ships etc.
+    this.gameboard[i][j] = 'x';
+  }
 }
