@@ -65,7 +65,7 @@ describe('Gameboard instantiated with ships', () => {
 
   test('Gameboard does not allow an attack to be received in the same place twice', () => {
     gameboard.receiveAttack(0, 0);
-    expect(gameboard.receiveAttack(1, 0)).toThrow();
+    expect(() => gameboard.receiveAttack(0, 0)).toThrow();
   });
 });
 
