@@ -1,6 +1,6 @@
 import Gameboard from '../gameboard';
 
-describe('Gameboard.receiveAttack method when there are ships added', () => {
+describe('Gameboard instantiated with ships', () => {
   // allShipCoordinates = [[shipFormat], [[iStart, jStart], [end]] ...]
   const allShipCoordinates = [
     [
@@ -64,7 +64,9 @@ describe('Gameboard.receiveAttack method when there are ships added', () => {
   });
 });
 
-test('Gameboard reports sinking as soon as Gameboard is instantiated without ships', () => {
-  gameboard = new Gameboard([]);
-  expect(gameboard.allShipsSunk).toBe(true);
+describe('Gameboard instantiated without ships', () => {
+  test('Gameboard reports sinking as soon as Gameboard is instantiated without ships', () => {
+    gameboard = new Gameboard([]);
+    expect(gameboard.allShipsSunk).toBe(true);
+  });
 });
