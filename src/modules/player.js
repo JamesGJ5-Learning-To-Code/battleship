@@ -6,5 +6,7 @@ export default class Player {
     this.opponent = null;
   }
 
-  //   attackOpponent(i, j) {}
+  attackOpponent(i, j) {
+    this.opponent.receiveAttack(i, j);
+  }
 }
