@@ -23,3 +23,9 @@ using x's on the gameboard)
 Player factory (or module, if CPU won't have its own Player):
 - Take turns playing the game by attack the enemy Gameboard
 - Game is played against computer, so make "computer" players capable of random plays. The computer should never shoot the same coordinate twice
+- Methods:
+- 1. Each player, be they human or computer, will have the ability to launch an 
+attack on the opponent's gameboard, so maybe a method called attackOponent(i, j). The class can be the same for both the human and the CPU, except the main game loop (outside of the Player object) will pick random coordinates to supply to Player.attackOponent(coordinates) for the CPU's Player object.
+- Properties:
+- 1. Player's own Gameboard object
+- 2. Reference to opponent Player object, which reminds a Player object of who its opponent is so that Player.attackOpponent(coordinates) can be called conveniently
