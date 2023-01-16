@@ -17,4 +17,9 @@ export default class Computer extends Player {
       }
     }
   }
+
+  attackRandomly() {
+    attackCoordinates = this.attackSequence.pop();
+    this.attackOpponent(attackCoordinates[0], attackCoordinates[1]);
+  }
 }
