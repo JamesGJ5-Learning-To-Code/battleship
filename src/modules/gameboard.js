@@ -14,6 +14,10 @@ export default class Gameboard {
 
   initialise(allShipCoordinates) {
     this.createGameboard(allShipCoordinates);
+    // TODO: when doing DOM stuff, set this._afloatShipQuantity via a setter
+    // that triggers an announcement after this._afloatShipQuantity is made 0
+    // (by instantiation with empty coordinates or decrementation by
+    // this.receiveAttack)
     this.afloatShipQuantity = allShipCoordinates.length;
   }
 
