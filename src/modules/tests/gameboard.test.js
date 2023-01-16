@@ -27,18 +27,15 @@ describe('Gameboard instantiated with ships', () => {
   });
 
   test('Gameboard does not report sinking if not all ships have not been sunk', () => {
-    for (let shipIndex = 0; shipIndex < allShipCoordinates.length; shipIndex += 1) {
+    // The below for loop condition should ensure one ship is not hit at all
+    for (let shipIndex = 0; shipIndex < allShipCoordinates.length - 1; shipIndex += 1) {
       const ship = allShipCoordinates[shipIndex];
       const start = ship[0];
       const end = ship[1];
-      // The below should find NEARLY all the coordinates occupied by ships, by interpolating
-      // between each ship's start and end coordinates. N.B. one of the below for loops will
-      // only run once, I.E. the one corresponding to the axes the ship is perpendicular to.
-      // However, areas of the ship in the last column any ship occupies are not hit (see how
-      // condition for second for loop differs to that of first), because the current testing
-      // block is for when NOT ALL ship areas are hit
+      // The below should find all the coordinates occupied by current ship, by interpolating
+      // between its start and end coordinates.
       for (let i = Math.min(start[0], end[0]); i < Math.max(start[0], end[0]) + 1; i += 1) {
-        for (let j = Math.min(start[1], end[1]); j < Math.max(start[1], end[1]); j += 1) {
+        for (let j = Math.min(start[1], end[1]); j < Math.max(start[1], end[1]) + 1; j += 1) {
           gameboard.receiveAttack(i, j);
         }
       }
