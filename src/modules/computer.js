@@ -7,7 +7,7 @@ export default class Computer extends Player {
     this.generateAttackSequence();
   }
 
-  initialise() {
+  generateAttackSequence() {
     const iSequence = arrayShuffle([...Array(10).keys()]);
     const jSequence = arrayShuffle([...Array(10).keys()]);
     this.attackSequence = [];
