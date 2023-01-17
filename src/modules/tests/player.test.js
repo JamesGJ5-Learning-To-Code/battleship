@@ -1,32 +1,23 @@
 import Player from '../player';
 
-describe('Player.attackOpponent method tests', () => {
+describe('Player this.hasLost method', () => {
+  let player;
   beforeEach(() => {
-    const playerCoordinates = [
+    player = new Player();
+    player.createOwnGameboard([
       [
-        [1, 2],
-        [5, 2],
+        [1, 0],
+        [1, 0],
       ],
-    ];
-    const opponentCoordinates = [
-      [
-        [1, 1],
-        [3, 1],
-      ],
-      [
-        [3, 6],
-        [3, 3],
-      ],
-      [
-        [6, 4],
-        [7, 4],
-      ],
-      [
-        [9, 8],
-        [2, 8],
-      ],
-    ];
-    const player = new Player(playerCoordinates);
-    const opponent = new Player(opponentCoordinates);
+    ]);
+  });
+
+  test('Player with a ship has not lost if its ship has not been destroyed', () => {
+    expect(player.hasLost()).toBe(false);
+  });
+
+  test('Player with a ship has lost if its ship has been destroyed', () => {
+    player.receiveAttack(1, 0);
+    expect(player.hasLost()).toBe(true);
   });
 });
