@@ -21,3 +21,28 @@ describe('Player this.hasLost method', () => {
     expect(player.hasLost()).toBe(true);
   });
 });
+
+describe('Player this.attackOpponent method', () => {
+  let player;
+  let opponent;
+  beforeEach(() => {
+    player = new Player();
+    opponent = new Player();
+    opponent.createOwnGameboard([
+      [
+        [1, 0],
+        [1, 0],
+      ],
+    ]);
+    player.opponent = opponent;
+  });
+
+  test('this.opponent.receiveAttack is not sent if this.attackOpponent is not called', () => {
+    expect(opponent.hasLost()).toBe(false);
+  });
+
+  test('this.opponent.receiveAttack is sent when this.attackOpponent is called', () => {
+    player.attackOpponent(1, 0);
+    expect(opponent.hasLost()).toBe(true);
+  });
+});
