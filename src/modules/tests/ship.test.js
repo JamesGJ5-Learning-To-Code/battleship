@@ -1,6 +1,6 @@
 import Ship from '../ship';
 
-describe('Ship.isSunk method', () => {
+describe('Ship this.isSunk method', () => {
   let ship;
   const shipLength = 3;
   beforeEach(() => {
