@@ -10,14 +10,18 @@ export default class Computer extends Player {
   }
 
   #generateAttackSequence() {
-    const iSequence = arrayShuffle([...Array(10).keys()]);
-    const jSequence = arrayShuffle([...Array(10).keys()]);
+    const iSequence = Computer.#makeRandomCoordinateValues;
+    const jSequence = Computer.#makeRandomCoordinateValues;
     this.#attackSequence = [];
     for (let iValueIndex = 0; iValueIndex < iSequence.length; iValueIndex += 1) {
       for (let jValueIndex = 0; jValueIndex < jSequence.length; jValueIndex += 1) {
         this.#attackSequence.push([iSequence[iValueIndex], jSequence[jValueIndex]]);
       }
     }
+  }
+
+  static #makeRandomCoordinateValues() {
+    return arrayShuffle([...Array(10).keys()]);
   }
 
   attackRandomly() {
