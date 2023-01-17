@@ -1,27 +1,29 @@
-/* eslint-disable no-underscore-dangle */
-// TODO: make this.length and this.hitsTaken private
 export default class Ship {
+  #hitsTaken;
+
+  #lengthValue;
+
   constructor(length) {
-    this.length = length;
-    this.hitsTaken = 0;
+    this.#length = length;
+    this.#hitsTaken = 0;
   }
 
-  set length(value) {
+  set #length(value) {
     if (!Number.isInteger(value) || value < 1) {
       throw new Error('The selected length must be an integer greater than 0');
     }
-    this._length = value;
+    this.#lengthValue = value;
   }
 
-  get length() {
-    return this._length;
+  get #length() {
+    return this.#lengthValue;
   }
 
   hit() {
-    this.hitsTaken += 1;
+    this.#hitsTaken += 1;
   }
 
   isSunk() {
-    return this.hitsTaken >= this.length;
+    return this.#hitsTaken >= this.#length;
   }
 }
