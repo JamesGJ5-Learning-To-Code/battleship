@@ -16,7 +16,9 @@ export default class Player {
   }
 
   attackOpponent(i, j) {
-    this.opponent.receiveAttack(i, j);
+    if (this.opponent instanceof Player) {
+      this.opponent.receiveAttack(i, j);
+    }
   }
 
   hasLost() {
