@@ -41,7 +41,7 @@ export default class Gameboard {
     const ship = Gameboard.#makeShip(iStart, jStart, iEnd, jEnd);
     for (let i = Math.min(iStart, iEnd); i < Math.max(iStart, iEnd) + 1; i += 1) {
       for (let j = Math.min(jStart, jEnd); j < Math.max(jStart, jEnd) + 1; j += 1) {
-        this.fillSquare(i, j, ship);
+        this.#fillSquare(i, j, ship);
       }
     }
   }
@@ -66,7 +66,7 @@ export default class Gameboard {
     return new Ship(shipLength);
   }
 
-  fillSquare(i, j, ship) {
+  #fillSquare(i, j, ship) {
     if (this.#gameboard[i][j] !== null) {
       throw new Error('Ships cannot be allowed to overlap');
     }
