@@ -78,12 +78,12 @@ export default class Gameboard {
     if (squareContents === 'x') {
       throw new Error('Attacks must not hit the same place twice');
     } else if (squareContents instanceof Ship) {
-      this.receiveHitToShip(squareContents);
+      this.#receiveHitToShip(squareContents);
     }
     this.markSquareAsHit(i, j);
   }
 
-  receiveHitToShip(ship) {
+  #receiveHitToShip(ship) {
     ship.hit();
     this.afloatShipQuantity -= ship.isSunk();
   }
