@@ -1,8 +1,8 @@
 import Gameboard from '../gameboard';
 
 describe('Gameboard instantiated with ships', () => {
-  // allShipCoordinates = [[shipFormat], [[iStart, jStart], [end]] ...]
-  const allShipCoordinates = [
+  // allShipEnds = [[shipFormat], [[iStart, jStart], [end]] ...]
+  const allShipEnds = [
     [
       [1, 1],
       [3, 1],
@@ -23,13 +23,13 @@ describe('Gameboard instantiated with ships', () => {
   let gameboard;
 
   beforeEach(() => {
-    gameboard = new Gameboard(allShipCoordinates);
+    gameboard = new Gameboard(allShipEnds);
   });
 
   test('Gameboard does not report sinking if not all ships have not been sunk', () => {
     // The below for loop condition should ensure one ship is not hit at all
-    for (let shipIndex = 0; shipIndex < allShipCoordinates.length - 1; shipIndex += 1) {
-      const ship = allShipCoordinates[shipIndex];
+    for (let shipIndex = 0; shipIndex < allShipEnds.length - 1; shipIndex += 1) {
+      const ship = allShipEnds[shipIndex];
       const start = ship[0];
       const end = ship[1];
       // The below should find all the coordinates occupied by current ship, by interpolating
@@ -47,8 +47,8 @@ describe('Gameboard instantiated with ships', () => {
   });
 
   test('Gameboard reports sinking as soon as all ships have been sunk', () => {
-    for (let shipIndex = 0; shipIndex < allShipCoordinates.length; shipIndex += 1) {
-      const ship = allShipCoordinates[shipIndex];
+    for (let shipIndex = 0; shipIndex < allShipEnds.length; shipIndex += 1) {
+      const ship = allShipEnds[shipIndex];
       const start = ship[0];
       const end = ship[1];
       for (let i = Math.min(start[0], end[0]); i < Math.max(start[0], end[0]) + 1; i += 1) {

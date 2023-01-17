@@ -3,29 +3,29 @@ import Ship from './ship';
 export default class Gameboard {
   #gameboard;
 
-  constructor(allShipCoordinates) {
-    // allShipCoordinates should be an array of arrays, each of the sub-arrays
+  constructor(allShipEnds) {
+    // allShipEnds should be an array of arrays, each of the sub-arrays
     // providing information about the placement of one ship. This information
     // comes in the form of two further arrays, each of which contain a single
     // grid point (specifically its i and j values); these two arrays mark the
     // beginning and end of a ship. So,
     // [[[iStart, jStart], [iEnd, jEnd]], [ship2] ...]
-    this.initialise(allShipCoordinates);
+    this.initialise(allShipEnds);
   }
 
-  initialise(allShipCoordinates) {
-    this.#createGameboard(allShipCoordinates);
-    this.afloatShipQuantity = allShipCoordinates.length;
+  initialise(allShipEnds) {
+    this.#createGameboard(allShipEnds);
+    this.afloatShipQuantity = allShipEnds.length;
   }
 
-  #createGameboard(allShipCoordinates) {
+  #createGameboard(allShipEnds) {
     this.#gameboard = [...Array(10)].map(() => Array(10).fill(null));
-    this.#placeAllShips(allShipCoordinates);
+    this.#placeAllShips(allShipEnds);
   }
 
-  #placeAllShips(allShipCoordinates) {
-    for (let shipIndex = 0; shipIndex < allShipCoordinates.length; shipIndex += 1) {
-      this.#placeShip(...allShipCoordinates[shipIndex]);
+  #placeAllShips(allShipEnds) {
+    for (let shipIndex = 0; shipIndex < allShipEnds.length; shipIndex += 1) {
+      this.#placeShip(...allShipEnds[shipIndex]);
     }
   }
 
