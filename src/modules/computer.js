@@ -13,9 +13,9 @@ export default class Computer extends Player {
     const iSequence = arrayShuffle([...Array(10).keys()]);
     const jSequence = arrayShuffle([...Array(10).keys()]);
     this.#attackSequence = [];
-    for (let iIndex = 0; iIndex < iSequence.length; iIndex += 1) {
-      for (let jIndex = 0; jIndex < jSequence.length; jIndex += 1) {
-        this.#attackSequence.push([iSequence[iIndex], jSequence[jIndex]]);
+    for (let iValueIndex = 0; iValueIndex < iSequence.length; iValueIndex += 1) {
+      for (let jValueIndex = 0; jValueIndex < jSequence.length; jValueIndex += 1) {
+        this.#attackSequence.push([iSequence[iValueIndex], jSequence[jValueIndex]]);
       }
     }
   }
