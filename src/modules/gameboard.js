@@ -38,7 +38,7 @@ export default class Gameboard {
     const [iStart, jStart] = start;
     const [iEnd, jEnd] = end;
     Gameboard.#validateCoordinateValues(iStart, jStart, iEnd, jEnd);
-    const ship = Gameboard.makeShip(iStart, jStart, iEnd, jEnd);
+    const ship = Gameboard.#makeShip(iStart, jStart, iEnd, jEnd);
     for (let i = Math.min(iStart, iEnd); i < Math.max(iStart, iEnd) + 1; i += 1) {
       for (let j = Math.min(jStart, jEnd); j < Math.max(jStart, jEnd) + 1; j += 1) {
         this.fillSquare(i, j, ship);
@@ -56,7 +56,7 @@ export default class Gameboard {
     }
   }
 
-  static makeShip(iStart, jStart, iEnd, jEnd) {
+  static #makeShip(iStart, jStart, iEnd, jEnd) {
     let shipLength;
     if (iStart === iEnd) {
       shipLength = Math.abs(jEnd - jStart) + 1;
