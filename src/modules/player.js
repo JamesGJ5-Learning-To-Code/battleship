@@ -3,10 +3,8 @@ import Gameboard from './gameboard';
 export default class Player {
   #ownGameboard;
 
-  #opponent;
-
   constructor() {
-    this.#opponent = null;
+    this.opponent = null;
   }
 
   createOwnGameboard(allShipEnds) {
