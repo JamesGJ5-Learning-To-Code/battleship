@@ -37,7 +37,7 @@ export default class Gameboard {
   #placeShip(start, end) {
     const [iStart, jStart] = start;
     const [iEnd, jEnd] = end;
-    Gameboard.validateCoordinateValues(iStart, jStart, iEnd, jEnd);
+    Gameboard.#validateCoordinateValues(iStart, jStart, iEnd, jEnd);
     const ship = Gameboard.makeShip(iStart, jStart, iEnd, jEnd);
     for (let i = Math.min(iStart, iEnd); i < Math.max(iStart, iEnd) + 1; i += 1) {
       for (let j = Math.min(jStart, jEnd); j < Math.max(jStart, jEnd) + 1; j += 1) {
@@ -46,7 +46,7 @@ export default class Gameboard {
     }
   }
 
-  static validateCoordinateValues(iStart, jStart, iEnd, jEnd) {
+  static #validateCoordinateValues(iStart, jStart, iEnd, jEnd) {
     if (iStart !== iEnd && jStart !== jEnd) {
       throw new Error('The ship must be either horizontal or vertical');
     } else if (
