@@ -20,4 +20,8 @@ export default class Player {
   attackOpponent(i, j) {
     this.opponent.receiveAttack(i, j);
   }
+
+  hasLost() {
+    return this.#ownGameboard.afloatShipQuantity === 0;
+  }
 }
