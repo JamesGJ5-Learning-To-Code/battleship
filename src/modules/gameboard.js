@@ -25,10 +25,10 @@ export default class Gameboard {
 
   #createGameboard(allShipCoordinates) {
     this.#gameboard = [...Array(10)].map(() => Array(10).fill(null));
-    this.placeAllShips(allShipCoordinates);
+    this.#placeAllShips(allShipCoordinates);
   }
 
-  placeAllShips(allShipCoordinates) {
+  #placeAllShips(allShipCoordinates) {
     for (let shipIndex = 0; shipIndex < allShipCoordinates.length; shipIndex += 1) {
       this.placeShip(...allShipCoordinates[shipIndex]);
     }
