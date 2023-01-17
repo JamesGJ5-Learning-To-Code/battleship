@@ -2,6 +2,8 @@ import Ship from './ship';
 
 // TODO: privatise properties and methods that should be privatised
 export default class Gameboard {
+  #gameboard;
+
   constructor(allShipCoordinates) {
     // allShipCoordinates should be an array of arrays, each of the sub-arrays
     // providing information about the placement of one ship. This information
@@ -22,7 +24,7 @@ export default class Gameboard {
   }
 
   #createGameboard(allShipCoordinates) {
-    this.gameboard = [...Array(10)].map(() => Array(10).fill(null));
+    this.#gameboard = [...Array(10)].map(() => Array(10).fill(null));
     this.placeAllShips(allShipCoordinates);
   }
 
@@ -65,14 +67,14 @@ export default class Gameboard {
   }
 
   fillSquare(i, j, ship) {
-    if (this.gameboard[i][j] !== null) {
+    if (this.#gameboard[i][j] !== null) {
       throw new Error('Ships cannot be allowed to overlap');
     }
-    this.gameboard[i][j] = ship;
+    this.#gameboard[i][j] = ship;
   }
 
   receiveAttack(i, j) {
-    const squareContents = this.gameboard[i][j];
+    const squareContents = this.#gameboard[i][j];
     if (squareContents === 'x') {
       throw new Error('Attacks must not hit the same place twice');
     } else if (squareContents instanceof Ship) {
@@ -87,6 +89,6 @@ export default class Gameboard {
   }
 
   markSquareAsHit(i, j) {
-    this.gameboard[i][j] = 'x';
+    this.#gameboard[i][j] = 'x';
   }
 }
