@@ -29,7 +29,9 @@ export default class Computer extends Player {
   }
 
   attackRandomly() {
-    const attackCoordinates = this.#attackSequence.pop();
-    this.attackOpponent(attackCoordinates[0], attackCoordinates[1]);
+    if (this.opponent instanceof Player || this.opponent instanceof Computer) {
+      const attackCoordinates = this.#attackSequence.pop();
+      this.attackOpponent(attackCoordinates[0], attackCoordinates[1]);
+    }
   }
 }
