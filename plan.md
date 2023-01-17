@@ -115,3 +115,15 @@ Represents someone playing a game. Able to have a Gameboard object and attack en
 
 COMPUTER:
 
+A Player capable of making random plays. Shouldn't make the same move twice.
+
+-> Chosen properties:
+--> randomAttackSequence (private)
+
+-> Chosen methods:
+--> attackRandomly (public), which simply calls Computer.attackOpponent passing coordinates from randomAttackSequence
+
+
+-> Required tests to player:
+
+--> YES attackRandomly. Do this by instantiating an opponent, giving it ships, and ensuring that when attackRandomly has not been called, opponent.hasLost is false, but when attackRandomly has been called 100 times, opponent.hasLost is true.
