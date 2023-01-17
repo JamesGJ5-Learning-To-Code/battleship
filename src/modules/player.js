@@ -13,6 +13,10 @@ export default class Player {
     this.#ownGameboard = new Gameboard(allShipEnds);
   }
 
+  receiveAttack(i, j) {
+    this.#ownGameboard.receiveAttack(i, j);
+  }
+
   attackOpponent(i, j) {
     this.opponent.receiveAttack(i, j);
   }
