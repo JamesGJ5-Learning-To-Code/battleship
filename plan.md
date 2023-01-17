@@ -1,4 +1,4 @@
-Ship:
+SHIP:
 
 An object representing a ship in a game of battleship. It should be able to be hit by opponent players and indicate whether or not it has sunk or not.
 
@@ -31,7 +31,7 @@ An object representing a ship in a game of battleship. It should be able to be h
 
 
 
-Gameboard:
+GAMEBOARD:
 
 An object representing a 10x10 gameboard in battleship. It should have various squares, each at a different location (indicated by coordinates). One should be able to place ships on it in chosen places and receive an attack to the gameboard. The gameboard should also indicate whether or not it has been sunk, via whether all of its ships have been sunk.
 
@@ -81,3 +81,37 @@ An object representing a 10x10 gameboard in battleship. It should have various s
 ---- 5. All squares with ships being hit once resulting in afloatShipQuantity becoming 0
 
 --> YES the Ship.hit method called by receiveAttack: this is an outgoing command so must ensure it is really called when expected. This is typically done via mocking, HOWEVER, the above tests will implicitly state whether hit() is sent, because if it is not, then the afloatShipQuantity will never decrease, because no Ship will ever become sunk, so don't worry in this particular case.
+
+
+
+PLAYER:
+
+Represents someone playing a game. Able to have a Gameboard object and attack enemy coordinates, and send received attacks to its own Gameboard. Also should be able to say whether they have lost or not.
+
+-> Properties suggested by TOP:
+--> Own Gameboard object
+
+-> Methods suggested by TOP:
+--> attackOpponent, which attempts to attack the opponent at passed coordinates
+
+-> Properties chosen:
+--> ownGameboard (private)
+--> opponent (public, as should be able to be set by the Player or some other entity, like the game loop)
+
+-> Methods chosen:
+--> createOwnGameboard (public), which takes coordinates and make Player.ownGameboard out of them
+--> receiveAttack (public), which takes coordinates and calls ownGameboard.receiveAttack. Doesn't have to make sure coordinates haven't already been attacked, that'll be down to the outer game.
+--> attackOpponent (public), which simply triggers opponent.receiveAttack with chosen coordinates
+--> hasLost (public), which indicates whether ownGameboard.afloatShipQuantity is 0 or not
+
+
+-> Required tests to Player:
+
+--> YES hasLost: instantiate Player with 1 ship, kill it using Player.receiveAttack, and assert that hasLost returns true; in another test, don't attack it at all and assert hasLost returns false.
+
+--> YES attackOpponent--have to ensure that opponent.receiveAttack is sent because it is an outgoing command. Can do this by mocking, but can also do this implicitly by instantiating some sort of opponent Player, giving them a ship of length 1 initially, setting this opponent as the opponent of Player1, making Player1 attack the new opponent, and asserting that the opponent hasLost.
+
+
+
+COMPUTER:
+
