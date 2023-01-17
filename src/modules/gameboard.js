@@ -1,6 +1,5 @@
 import Ship from './ship';
 
-// TODO: privatise properties and methods that should be privatised
 export default class Gameboard {
   #gameboard;
 
