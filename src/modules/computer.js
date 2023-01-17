@@ -6,10 +6,10 @@ export default class Computer extends Player {
 
   constructor(allShipCoordinates) {
     super(allShipCoordinates);
-    this.generateAttackSequence();
+    this.#generateAttackSequence();
   }
 
-  generateAttackSequence() {
+  #generateAttackSequence() {
     const iSequence = arrayShuffle([...Array(10).keys()]);
     const jSequence = arrayShuffle([...Array(10).keys()]);
     this.#attackSequence = [];
