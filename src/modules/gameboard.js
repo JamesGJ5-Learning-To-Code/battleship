@@ -52,12 +52,13 @@ export default class Gameboard {
   }
 
   static #makeShip(iStart, jStart, iEnd, jEnd) {
-    let shipLength;
+    let startToEndVector;
     if (iStart === iEnd) {
-      shipLength = Math.abs(jEnd - jStart) + 1;
+      startToEndVector = jEnd - jStart;
     } else if (jStart === jEnd) {
-      shipLength = Math.abs(iEnd - iStart) + 1;
+      startToEndVector = iEnd - iStart;
     }
+    const shipLength = Math.abs(startToEndVector) + 1;
     return new Ship(shipLength);
   }
 
