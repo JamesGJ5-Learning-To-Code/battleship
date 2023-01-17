@@ -13,7 +13,7 @@ export default class Gameboard {
   }
 
   initialise(allShipCoordinates) {
-    this.createGameboard(allShipCoordinates);
+    this.#createGameboard(allShipCoordinates);
     // TODO: when doing DOM stuff, set this._afloatShipQuantity via a setter
     // that triggers an announcement after this._afloatShipQuantity is made 0
     // (by instantiation with empty coordinates or decrementation by
@@ -21,7 +21,7 @@ export default class Gameboard {
     this.afloatShipQuantity = allShipCoordinates.length;
   }
 
-  createGameboard(allShipCoordinates) {
+  #createGameboard(allShipCoordinates) {
     this.gameboard = [...Array(10)].map(() => Array(10).fill(null));
     this.placeAllShips(allShipCoordinates);
   }
