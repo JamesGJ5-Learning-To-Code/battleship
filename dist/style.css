@@ -1,0 +1,16 @@
+/* Gameboard should have ALL grid squares as direct child divs */
+.gameboard {
+    margin: 20px;
+    display: grid;
+    grid-template-rows: repeat(10, 30px);
+    grid-template-columns: repeat(10, 30px);
+    gap: 1px;
+}
+
+#ownGameboard .square {
+    background-color: blue;
+}
+
+#opponentGameboard .square {
+    background-color: red;
+}
