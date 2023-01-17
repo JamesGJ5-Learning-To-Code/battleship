@@ -19,6 +19,8 @@ export default class Gameboard {
   }
 
   #createGameboard(allShipEnds) {
+    // TODO: later, make the size of the board configurable and change the rest
+    // of the app accordingly
     this.#gameboard = [...Array(10)].map(() => Array(10).fill(null));
     this.#placeAllShips(allShipEnds);
   }
