@@ -77,7 +77,7 @@ An object representing a 10x10 gameboard in battleship. It should have various s
 ---- 1. receiveAttack done on a square of water should result in afloatShipQuantity remaining at 2
 ---- 2. The smaller ship being hit once resulting in afloatShipQuantity becoming 1
 ---- 3. The smaller ship being hit twice resulting in afloatShipQuantity still being 1
----- 4. The longer ship being hit once resulting in afloatShipQuantity remaining as 1
+---- 4. The longer ship being hit once resulting in afloatShipQuantity remaining as 2
 ---- 5. All squares with ships being hit once resulting in afloatShipQuantity becoming 0
 
 --> YES the Ship.hit method called by receiveAttack: this is an outgoing command so must ensure it is really called when expected. This is typically done via mocking, HOWEVER, the above tests will implicitly state whether hit() is sent, because if it is not, then the afloatShipQuantity will never decrease, because no Ship will ever become sunk, so don't worry in this particular case.
