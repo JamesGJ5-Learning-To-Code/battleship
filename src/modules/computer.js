@@ -15,13 +15,17 @@ export default class Computer extends Player {
     this.#attackSequence = [];
     for (let iValueIndex = 0; iValueIndex < iSequence.length; iValueIndex += 1) {
       for (let jValueIndex = 0; jValueIndex < jSequence.length; jValueIndex += 1) {
-        this.#attackSequence.push([iSequence[iValueIndex], jSequence[jValueIndex]]);
+        this.#addCoordinatePair(iSequence[iValueIndex], jSequence[jValueIndex]);
       }
     }
   }
 
   static #makeRandomCoordinateValues() {
     return arrayShuffle([...Array(10).keys()]);
+  }
+
+  #addCoordinatePair(i, j) {
+    this.#attackSequence.push([i, j]);
   }
 
   attackRandomly() {
