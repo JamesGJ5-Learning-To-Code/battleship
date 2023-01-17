@@ -80,7 +80,7 @@ export default class Gameboard {
     } else if (squareContents instanceof Ship) {
       this.#receiveHitToShip(squareContents);
     }
-    this.markSquareAsHit(i, j);
+    this.#markSquareAsHit(i, j);
   }
 
   #receiveHitToShip(ship) {
@@ -88,7 +88,7 @@ export default class Gameboard {
     this.afloatShipQuantity -= ship.isSunk();
   }
 
-  markSquareAsHit(i, j) {
+  #markSquareAsHit(i, j) {
     this.#gameboard[i][j] = 'x';
   }
 }
