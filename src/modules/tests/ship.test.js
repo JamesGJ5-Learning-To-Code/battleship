@@ -1,18 +1,20 @@
 import Ship from '../ship';
 
 describe('Ship.isSunk method', () => {
-  const shipLength = 3;
   let ship;
-
+  const shipLength = 3;
   beforeEach(() => {
     ship = new Ship(shipLength);
   });
 
-  test('Ship is initially unsunk', () => {
+  test('Ship is not sunk if it receives fewer hits than its length', () => {
+    for (let i = 0; i < shipLength - 1; i += 1) {
+      ship.hit();
+    }
     expect(ship.isSunk()).toBe(false);
   });
 
-  test('Ship is sunk when number of valid hits first reaches its length', () => {
+  test('Ship is sunk if it receives hits equal to its length', () => {
     for (let i = 0; i < shipLength; i += 1) {
       ship.hit();
     }
