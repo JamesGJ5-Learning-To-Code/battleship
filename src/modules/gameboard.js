@@ -30,11 +30,11 @@ export default class Gameboard {
 
   #placeAllShips(allShipCoordinates) {
     for (let shipIndex = 0; shipIndex < allShipCoordinates.length; shipIndex += 1) {
-      this.placeShip(...allShipCoordinates[shipIndex]);
+      this.#placeShip(...allShipCoordinates[shipIndex]);
     }
   }
 
-  placeShip(start, end) {
+  #placeShip(start, end) {
     const [iStart, jStart] = start;
     const [iEnd, jEnd] = end;
     Gameboard.validateCoordinateValues(iStart, jStart, iEnd, jEnd);
