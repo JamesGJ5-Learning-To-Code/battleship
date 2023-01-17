@@ -5,9 +5,12 @@ export default class Player {
 
   #opponent;
 
-  constructor(allShipCoordinates) {
-    this.#ownGameboard = new Gameboard(allShipCoordinates);
+  constructor() {
     this.#opponent = null;
+  }
+
+  createOwnGameboard(allShipEnds) {
+    this.#ownGameboard = new Gameboard(allShipEnds);
   }
 
   attackOpponent(i, j) {
