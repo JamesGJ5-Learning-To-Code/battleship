@@ -2,7 +2,7 @@ import arrayShuffle from 'array-shuffle';
 import Player from './player';
 
 export default class Computer extends Player {
-  #attackSequence
+  #attackSequence;
 
   constructor(allShipCoordinates) {
     super(allShipCoordinates);
