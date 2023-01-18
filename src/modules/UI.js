@@ -1,6 +1,7 @@
 import Player from './player';
 import Computer from './computer';
 
+// TODO: privatise properties and methods worth privatising
 export default class UI {
   static human;
 
@@ -69,6 +70,7 @@ export default class UI {
   static displayHumanGameboard() {
     const ownGameboardDiv = document.getElementById('ownGameboard');
     UI.makePlainGrid(ownGameboardDiv);
+    UI.placeAllShips(ownGameboardDiv, UI.humanAllShipEnds);
   }
 
   static makePlainGrid(ownGameboardDiv) {
@@ -85,5 +87,28 @@ export default class UI {
     square.setAttribute('data-i', i);
     square.setAttribute('data-j', j);
     return square;
+  }
+
+  // TODO: refactor with similar code in ./gameboard.js
+  static placeAllShips(gridContainer, allShipEnds) {
+    for (let shipIndex = 0; shipIndex < allShipEnds.length; shipIndex += 1) {
+      UI.placeShip(gridContainer, ...allShipEnds[shipIndex]);
+    }
+  }
+
+  static placeShip(gridContainer, start, end) {
+    const [iStart, jStart] = start;
+    const [iEnd, jEnd] = end;
+    for (let i = Math.min(iStart, iEnd); i < Math.max(iStart, iEnd) + 1; i += 1) {
+      for (let j = Math.min(jStart, jEnd); j < Math.max(jStart, jEnd) + 1; j += 1) {
+        UI.fillSquareWithShip(gridContainer, i, j);
+      }
+    }
+  }
+
+  static fillSquareWithShip(gridContainer, i, j) {
+    const childIndex = 10 * i + j;
+    const shipSquare = gridContainer.childNodes[childIndex];
+    shipSquare.style.backgroundColor = 'grey';
   }
 }
