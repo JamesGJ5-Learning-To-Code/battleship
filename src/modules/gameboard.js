@@ -72,11 +72,15 @@ export default class Gameboard {
   }
 
   receiveAttack(i, j) {
+    // As well as marking the gameboard aptly, this returns true if there was a
+    // ship where the hit just occurred and false otherwise
     const squareContents = this.#gameboard[i][j];
+    this.#markSquareAsHit(i, j);
     if (squareContents instanceof Ship) {
       this.#receiveHitToShip(squareContents);
+      return true;
     }
-    this.#markSquareAsHit(i, j);
+    return false;
   }
 
   #receiveHitToShip(ship) {

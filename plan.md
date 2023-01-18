@@ -127,3 +127,37 @@ A Player capable of making random plays. Shouldn't make the same move twice.
 -> Required tests to player:
 
 --> YES attackRandomly. Do this by instantiating an opponent, giving it ships, and ensuring that when attackRandomly has not been called, opponent.hasLost is false, but when attackRandomly has been called 100 times, opponent.hasLost is true.
+
+
+
+MAIN GAME LOOP AND MODULE FOR DOM INTERACTION (UI)
+
+-> TOP suggestions:
+
+-- 1. Game loop sets up new game by making Players and Gameboards, for now just populated with predetermined coordinates.
+
+-- 2. Display both the player's boards and render them using information from the Gameboard class:
+---> Need methods to:
+---- 1. Render the gameboards
+---- 2. Take user input for attacking
+---> For attacks, let user click coordinate in enemy Gameboard
+
+-- 3. Gameboard steps through game turn by turn using only methods from other objects.
+
+-- 4. Create conditions so the game ends once one player's ships have all been sunk. This function is appropriate for the Game module.
+
+
+-> My workflow:
+
+-- 1. In a primitive version of the completed app, things would be set up by allowing the user to type in the coordinates for the ends of each ship, then clicking a start button. If the coordinates were unsatisfactory, the user would be told to input them again. Otherwise, the game would begin...
+
+-- 2. Upon the game beginning, the user's gameboard would visually be populated by their ships, and an empty-looking gameboard would show up for the CPU. Under the surface, the user's choices would render their own gameboard, and the CPU's gameboard would be rendered randomly.
+
+-- 3. So, while I am initialising things with predetermined coordinates, it would still be apt to have things begin when I click the start button. At this point, the event listener for such a click should make a Player object and a Computer object (for human and CPU respectively). For the #ownGameboard of each, instead of taking coordinates from the UI (for the human) and randomly (for the Computer), Player.createOwnGameboard and Computer.createOwnGameboard would be made with predetermined coordinates.
+
+-- 4. For now, let's say the human is the player that starts. Whenever it becomes the human's turn, the opponent gameboard is clickable, and they can click a square on it (and immediately the opponent gameboard becomes unclickable to prevent multiple attacks in one go while the following logic is operating).
+-- If the attack simply hits water, we just record an X on the square with a blue background; however, if the attack hits a ship, we record an X on the square with a white background
+-- Afterwards, we check if the opponent has lost, and if it has, we record that in some sort of div on the page and have some restart button the user can use to (you guessed it) restart the game--let this button be ever-present.
+-- If the human hasn't lost, the turn switches to the Computer, and they do all the same things as above same things but with a random attack.
+
+--> Now, in Step 4 above, seeing whether the attack hits the CPU's ship or just water requires the CPU to report this. So, the easiest way to do this would probably be to allow Gameboard this.receiveAttack to return the nature of what was already in the hit spot. Fortunately, this shouldn't affect any test suites.

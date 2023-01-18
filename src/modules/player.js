@@ -12,12 +12,15 @@ export default class Player {
   }
 
   receiveAttack(i, j) {
-    this.#ownGameboard.receiveAttack(i, j);
+    return this.#ownGameboard.receiveAttack(i, j);
   }
 
   attackOpponent(i, j) {
+    // Because of how Gameboard this.receiveAttack is defined, the below
+    // should return true if there was an unhit ship in the attack spot and false
+    // otherwise
     if (this.opponent instanceof Player) {
-      this.opponent.receiveAttack(i, j);
+      return this.opponent.receiveAttack(i, j);
     }
   }
 
