@@ -15,6 +15,7 @@ export default class Player {
     return this.#ownGameboard.receiveAttack(i, j);
   }
 
+  // eslint-disable-next-line consistent-return
   attackOpponent(i, j) {
     // Because of how Gameboard this.receiveAttack is defined, the below
     // should return true if there was an unhit ship in the attack spot and false

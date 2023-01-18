@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import Player from './player';
 
 export default class Computer extends Player {
@@ -20,8 +21,8 @@ export default class Computer extends Player {
   }
 
   static #makeRandomCoordinateValues() {
-    // TODO: This comes from 
-    // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array, 
+    // TODO: This comes from
+    // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array,
     // should replace with an imported module or something
 
     // return arrayShuffle([...Array(10).keys()]);
@@ -33,10 +34,10 @@ export default class Computer extends Player {
     let randomIndex;
 
     // While there remain elements to shuffle.
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       // Pick a remaining element.
       randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+      currentIndex -= 1;
 
       // And swap it with the current element.
       [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
