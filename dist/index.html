@@ -9,7 +9,11 @@
     <script src="./bundle.js" defer></script>
 </head>
 <body>
-    <div id="ownGameboard" class="gameboard"></div>
-    <div id="opponentGameboard" class="gameboard"></div>
+    <!-- TODO: later, use outer div to sort out flex so you have ownGameboard 
+    on left and opponentGameboard on right -->
+    <div class="gameboardPair">
+        <div id="ownGameboard" class="gameboard"></div>
+        <div id="opponentGameboard" class="gameboard"></div>
+    </div>
 </body>
 </html>
