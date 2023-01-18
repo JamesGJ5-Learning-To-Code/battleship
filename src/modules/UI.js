@@ -60,6 +60,7 @@ export default class UI {
     // TODO: later, pass random coordinates
     UI.computer = new Computer(UI.computerAllShipEnds);
     UI.computer.createOwnGameboard(UI.computerAllShipEnds);
+    UI.displayComputerGameboard();
   }
 
   static createEnmity() {
@@ -110,5 +111,10 @@ export default class UI {
     const childIndex = 10 * i + j;
     const shipSquare = gridContainer.childNodes[childIndex];
     shipSquare.style.backgroundColor = 'grey';
+  }
+
+  static displayComputerGameboard() {
+    const computerGameboardDiv = document.getElementById('opponentGameboard');
+    UI.makePlainGrid(computerGameboardDiv);
   }
 }
