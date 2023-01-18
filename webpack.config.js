@@ -17,13 +17,11 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-    ]
+    ],
   },
   resolve: {
     extensions: ['.js'],
   },
-  plugins: [
-    new ESLintPlugin()
-  ],
-  mode: 'development'
+  plugins: [new ESLintPlugin()],
+  mode: 'development',
 };
