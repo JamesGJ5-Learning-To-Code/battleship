@@ -72,14 +72,18 @@ export default class UI {
   }
 
   static makePlainGrid(ownGameboardDiv) {
-    for (let i = 0; i < 100; i += 1) {
-      ownGameboardDiv.appendChild(UI.makeSquare());
+    for (let i = 0; i < 10; i += 1) {
+      for (let j = 0; j < 10; j += 1) {
+        ownGameboardDiv.appendChild(UI.makeSquare(i, j));
+      }
     }
   }
 
-  static makeSquare() {
+  static makeSquare(i, j) {
     const square = document.createElement('div');
     square.classList.add('square');
+    square.setAttribute('data-i', i);
+    square.setAttribute('data-j', j);
     return square;
   }
 }
