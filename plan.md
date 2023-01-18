@@ -160,4 +160,4 @@ MAIN GAME LOOP AND MODULE FOR DOM INTERACTION (UI)
 -- Afterwards, we check if the opponent has lost, and if it has, we record that in some sort of div on the page and have some restart button the user can use to (you guessed it) restart the game--let this button be ever-present.
 -- If the human hasn't lost, the turn switches to the Computer, and they do all the same things as above same things but with a random attack.
 
---> Now, in Step 4 above, seeing whether the attack hits the CPU's ship or just water requires the CPU to report this. So, the easiest way to do this would probably be to allow Gameboard this.receiveAttack to return the nature of what was already in the hit spot. Fortunately, this shouldn't affect any test suites.
+--> DONE Now, in Step 4 above, seeing whether the attack hits the CPU's ship or just water requires the CPU to report this. So, the easiest way to do this would probably be to allow Gameboard this.receiveAttack to return the nature of what was already in the hit spot. Fortunately, this shouldn't affect any test suites.
