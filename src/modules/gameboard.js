@@ -71,6 +71,11 @@ export default class Gameboard {
     this.#gameboard[i][j] = ship;
   }
 
+  // TODO: uncouple the below code, so you can hit the gameboard and report whether
+  // a ship was there separately. Do this, for example, by giving the Gameboard
+  // a property called lastHitToShip, which is marked as true whenever this becomes
+  // true and false otherwise. Then, allow Player to report this via a method,
+  // so that later Computer gameboard can be filled in aptly
   receiveAttack(i, j) {
     // As well as marking the gameboard aptly, this returns true if there was a
     // ship where the hit just occurred and false otherwise
