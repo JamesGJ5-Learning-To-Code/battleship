@@ -52,6 +52,7 @@ export default class UI {
     // TODO: later, pass the coordinates that the user inputs on the page
     UI.human = new Player();
     UI.human.createOwnGameboard(UI.humanAllShipEnds);
+    UI.displayHumanGameboard();
   }
 
   static makeComputer() {
@@ -63,5 +64,22 @@ export default class UI {
   static createEnmity() {
     UI.human.opponent = UI.computer;
     UI.computer.opponent = UI.human;
+  }
+
+  static displayHumanGameboard() {
+    const ownGameboardDiv = document.getElementById('ownGameboard');
+    UI.makePlainGrid(ownGameboardDiv);
+  }
+
+  static makePlainGrid(ownGameboardDiv) {
+    for (let i = 0; i < 100; i += 1) {
+      ownGameboardDiv.appendChild(UI.makeSquare());
+    }
+  }
+
+  static makeSquare() {
+    const square = document.createElement('div');
+    square.classList.add('square');
+    return square;
   }
 }
