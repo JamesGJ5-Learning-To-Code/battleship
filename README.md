@@ -1,0 +1,1 @@
+Primitive project made in vanilla JS to learn to test JavaScript using Jest for the first time.
